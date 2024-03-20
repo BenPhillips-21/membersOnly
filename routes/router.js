@@ -1,13 +1,20 @@
 var express = require('express');
 var router = express.Router();
+const Message = require("../models/message");
+const asyncHandler = require("express-async-handler");
 
 const user_controller = require('../controllers/userController')
 
 /* GET home page. */
-router.get("/", (req, res) => {
-  console.log(res.locals.currentUser)
-  res.render("index", { user: req.user });
-});
+
+// find all messages put them in allMessages variable an pass it to '/'
+router.get("/", asyncHandler(async (req, res) => {
+  const allMessages = await Message.find({}, "text date user")
+    .sort({ date: 1 })
+    .populate("user")
+    .exec();
+  res.render("index", { user: res.locals.currentUser, messages: allMessages });
+}))
 
 router.get("/register", user_controller.register);
 
