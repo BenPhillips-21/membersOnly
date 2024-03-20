@@ -35,8 +35,8 @@ async function messageCreate(index, text, date, user) {
   console.log(`Added message: ${text}`);
 }
 
-async function userCreate(index, username, password) {
-  const userdetail = { username: username, password: password };
+async function userCreate(index, username, password, member, admin) {
+  const userdetail = { username: username, password: password, member: member, admin: admin };
   const user = new User(userdetail);
   await user.save();
   users[index] = user;
@@ -77,18 +77,24 @@ async function createUsers() {
   await Promise.all([
     userCreate(
       0,
-      'MexicanJeff',
-      'secretMexicanpassword'
+      'jeff',
+      'jeff',
+      false,
+      false
     ),
     userCreate(
       1,
       'ItalianMario',
-      'superSecretItalianPassword'
+      'superSecretItalianPassword',
+       false,
+       false
     ),
     userCreate(
       2,
       'FrenchPierre',
-      'topSecretFrenchPassword'
+      'topSecretFrenchPassword',
+       false,
+       false
     ),
   ]);
 }

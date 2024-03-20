@@ -4,6 +4,7 @@ const Message = require("../models/message");
 const asyncHandler = require("express-async-handler");
 
 const user_controller = require('../controllers/userController')
+const member_controller = require('../controllers/memberController')
 
 /* GET home page. */
 
@@ -24,6 +25,9 @@ router.get("/login", user_controller.login_get);
 
 router.post("/login", user_controller.login_post);
 
+router.get("/jointheclub", member_controller.get_member_page);
+
+router.post("/jointheclub", member_controller.post_member_page);
 
 module.exports = router;
 

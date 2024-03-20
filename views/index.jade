@@ -4,6 +4,7 @@ block content
   h1='Members Only'
   if user !== undefined
     h2=`Welcome ${user.username}`
+    p=`${user.member}`
   each msg in messages
     p=msg.text
     p=msg.date

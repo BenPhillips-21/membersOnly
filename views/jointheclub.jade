@@ -1,0 +1,15 @@
+extends layout
+
+block content
+
+  form(method='POST')
+    div.form-group
+      label(for='passcode') Enter the secret passcode:
+      input#passcode.form-control(type='text', placeholder="..." name='passcode' required )
+      br
+      button.btn.btn-primary(type='submit') Submit
+
+  if errors
+    ul
+      for error in errors
+        li!= error.msg
