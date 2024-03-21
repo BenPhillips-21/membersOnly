@@ -40,6 +40,7 @@ exports.get_delete_message = asyncHandler(async (req, res) => {
   res.render("message_delete", {
     title: "Delete message",
     message: message,
+    user: res.locals.currentUser.username
   });
 })
 
