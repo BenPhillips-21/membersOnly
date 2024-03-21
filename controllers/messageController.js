@@ -23,7 +23,7 @@ exports.post_new_message = asyncHandler(async (req, res, next) => {
       return next(err);
     }
     } else {
-        res.send("You must be a Premium Member in order to post a new message!")
+        res.render("notmember")
         // Tell user to become Premium Member
     }
 })
@@ -64,7 +64,7 @@ exports.post_delete_message = asyncHandler(async (req, res) => {
 
 exports.get_all_messages = asyncHandler(async (req, res) => {
   const allMessages = await Message.find({}, "text date user")
-    .sort({ date: 1 })
+    .sort({ date: -1 })
     .populate("user")
     .exec();
   res.render("index", { user: res.locals.currentUser, messages: allMessages });

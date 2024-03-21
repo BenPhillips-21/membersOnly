@@ -3,11 +3,15 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
-    a(href="/") Home
-    a(href="/register") Register
-    a(href="/login") Login
-    a(href="/createpost") Create Post
-    a(href="/jointheclub") Become Premium Member
-    a(href="/becomeadmin") Become An Admin
   body
+    div.nav-container
+      a(href="/") Home
+      a(href="/register") Register
+      a(href="/login") Login
+      if user !== undefined
+        a(href="/newmessage") Create Post
+        a(href="/jointheclub") Become Premium Member
+        a(href="/becomeadmin") Become An Admin
     block content
+
+

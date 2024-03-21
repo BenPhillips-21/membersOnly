@@ -28,7 +28,7 @@ router.get("/becomeadmin", member_controller.get_admin);
 router.post("/becomeadmin", member_controller.post_admin);
 
 router.get("/newmessage", message_controller.get_new_message);
-// user must be signed in
+
 router.post("/newmessage", message_controller.post_new_message);
 
 router.get("/deletemessage/:id", message_controller.get_delete_message);

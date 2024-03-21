@@ -1,20 +1,22 @@
 extends layout
 
 block content
-  h1='Members Only'
-  if user !== undefined
-    h2=`Welcome ${user.username}`
-    p=`Premium Member Status: ${user.member}`
-    p=`Admin Status: ${user.admin}`
-    a(href='/newmessage')
-      button Create New Message
-  each msg in messages
-    p=msg.text
-    p=msg.formattedDate
+  div.home-container
+    h1='Members Only'
     if user !== undefined
-      p=msg.user.username
+      h2=`Welcome ${user.username}`
+      a(href='/newmessage')
+        button.button(style="font-size: 16px; margin-bottom: 8px;") Create New Message
+    each msg in messages
+      div.message-container
+        p=`"${msg.text}"`
+        if user === undefined
+          p=msg.formattedDate
         if user !== undefined
-          if user.admin === true 
-            a(href='/deletemessage' + msg.url)
-              button Delete Message
+          p=`Written by ${msg.user.username} on ${msg.formattedDate}`
+          br
+          if user !== undefined
+            if user.admin === true 
+              a(href='/deletemessage' + msg.url)
+                button Delete Message
 
