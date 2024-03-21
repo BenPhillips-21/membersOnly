@@ -5,6 +5,7 @@
 **Link to website:** https://membersonly-production-0e79.up.railway.app/
 
 **Features**
+   
     User Authentication:
         Users can sign up with a username and password.
         Passwords are securely hashed using bcrypt for enhanced security.
