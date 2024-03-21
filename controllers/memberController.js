@@ -24,7 +24,7 @@ exports.post_member_page = (req, res) => {
             });
         res.redirect('/')
     } else {
-        console.log("try again goyim!")
+        res.send("User update unsuccessful")
     }
 }
 
@@ -47,7 +47,6 @@ exports.post_admin = (req, res) => {
             });
         res.redirect('/')
     } else {
-        console.log("try again goyim!")
-        // change this
+        res.send("User update unsuccessful")
     }
 }

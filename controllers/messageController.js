@@ -24,7 +24,6 @@ exports.post_new_message = asyncHandler(async (req, res, next) => {
     }
     } else {
         res.render("notmember")
-        // Tell user to become Premium Member
     }
 })
 

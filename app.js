@@ -19,7 +19,27 @@ db.on("error", console.error.bind(console, "mongo connection error"));
 
 var Router = require('./routes/router');
 
+const compression = require("compression");
+const helmet = require("helmet");
+
 var app = express();
+
+const RateLimit = require("express-rate-limit");
+const limiter = RateLimit({
+  windowMs: 1 * 60 * 1000,
+  max: 30,
+});
+app.use(limiter);
+
+app.use(compression());
+
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      "script-src": ["'self'", "code.jquery.com", "cdn.jsdelivr.net"],
+    },
+  }),
+);
 
 app.use(session({ secret: process.env.SECRET_KEY, resave: false, saveUninitialized: true }));
 
