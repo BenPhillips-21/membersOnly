@@ -5,17 +5,11 @@ const asyncHandler = require("express-async-handler");
 
 const user_controller = require('../controllers/userController')
 const member_controller = require('../controllers/memberController')
+const message_controller = require('../controllers/messageController')
 
 /* GET home page. */
 
-// find all messages put them in allMessages variable an pass it to '/'
-router.get("/", asyncHandler(async (req, res) => {
-  const allMessages = await Message.find({}, "text date user")
-    .sort({ date: 1 })
-    .populate("user")
-    .exec();
-  res.render("index", { user: res.locals.currentUser, messages: allMessages });
-}))
+router.get("/", message_controller.get_all_messages);
 
 router.get("/register", user_controller.register);
 
@@ -28,6 +22,18 @@ router.post("/login", user_controller.login_post);
 router.get("/jointheclub", member_controller.get_member_page);
 
 router.post("/jointheclub", member_controller.post_member_page);
+
+router.get("/becomeadmin", member_controller.get_admin);
+
+router.post("/becomeadmin", member_controller.post_admin);
+
+router.get("/newmessage", message_controller.get_new_message);
+// user must be signed in
+router.post("/newmessage", message_controller.post_new_message);
+
+router.get("/deletemessage/:id", message_controller.get_delete_message);
+
+router.post("/deletemessage/:id", message_controller.post_delete_message);
 
 module.exports = router;
 

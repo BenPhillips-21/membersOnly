@@ -4,9 +4,17 @@ block content
   h1='Members Only'
   if user !== undefined
     h2=`Welcome ${user.username}`
-    p=`${user.member}`
+    p=`Premium Member Status: ${user.member}`
+    p=`Admin Status: ${user.admin}`
+    a(href='/newmessage')
+      button Create New Message
   each msg in messages
     p=msg.text
-    p=msg.date
-    p=msg.user.username
+    p=msg.formattedDate
+    if user !== undefined
+      p=msg.user.username
+        if user !== undefined
+          if user.admin === true 
+            a(href='/deletemessage' + msg.url)
+              button Delete Message
 
