@@ -19,16 +19,16 @@
         User authentication is implemented using Passport.js for secure login functionality.
         Only registered users can access the platform.
 
+    Admin Privileges:
+        An optional "Admin" field is available in the user model.
+        Users marked as admins have additional privileges, such as deleting messages.
+        Admin-specific features are accessible only to users with admin status.
+
     Message Creation:
         Authenticated users can create messages with a title, timestamp, and text.
         Messages are associated with the user who created them.
 
     Message Display:
         All member messages are displayed on the home page.
-        Author names and dates are hidden from non-members to maintain privacy.
-        Only club members can view the complete details of each message.
-
-    Admin Privileges:
-        An optional "Admin" field is available in the user model.
-        Users marked as admins have additional privileges, such as deleting messages.
-        Admin-specific features are accessible only to users with admin status.
+        Author names are hidden from non-members to maintain privacy.
+        Only Premium members can view the complete details of each message.
