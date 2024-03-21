@@ -5,13 +5,14 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     div.nav-container
-      a(href="/") Home
-      a(href="/register") Register
-      a(href="/login") Login
-      if user !== undefined
+      if user === undefined
+        a(href="/") Home
+        a(href="/register") Register
+        a(href="/login") Login
+      else if user !== undefined
+        a(href="/") Home
         a(href="/newmessage") Create Post
         a(href="/jointheclub") Become Premium Member
         a(href="/becomeadmin") Become An Admin
+        a(href="/logout") Log Out
     block content
-
-

@@ -5,6 +5,18 @@ const passport = require("passport");
 const { body, validationResult } = require("express-validator");
 const asyncHandler = require("express-async-handler");
 
+exports.log_out = (req,res) => {
+  req.logout(function(err) {
+    if (err) {
+      // Handle error
+      console.error(err);
+    } else {
+      // User logged out successfully
+      res.redirect('/'); // Redirect to homepage or any other page
+    }
+  });
+}
+
 exports.login_get = (req, res) => {
     res.render('login')
 }
